@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LoftMoney_2</string>
+    <string name="Add">Добавить</string>
+    <string name="helloWorld" >Привет, Мир!</string>
+    <string name="item">Название</string>
+    <string name="price">Цена</string>
+    <string name="title_activity_add_item">Расходы</string>
+    <string name="main_activity">Вход</string>
+</resources>
