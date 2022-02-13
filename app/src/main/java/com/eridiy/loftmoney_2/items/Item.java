@@ -3,9 +3,9 @@ package com.eridiy.loftmoney_2.items;
 public class Item {
 
     private final String name;
-    private final String price;
+    private final int price;
 
-    public Item(String name, String price) {
+    public Item(String name, int price) {
         this.name = name;
         this.price = price;
     }
@@ -14,8 +14,7 @@ public class Item {
         return name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
-
 }
