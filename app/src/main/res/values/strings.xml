@@ -6,4 +6,11 @@
     <string name="price">Price</string>
     <string name="title_activity_add_item">Expenses</string>
     <string name="main_activity">Login</string>
+
+    <array name="main_pager_titles">
+        <item>Expenses</item>
+        <item>Incomes</item>
+        <item>Balance</item>
+    </array>
+
 </resources>

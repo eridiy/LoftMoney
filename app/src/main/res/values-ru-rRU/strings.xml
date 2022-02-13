@@ -7,4 +7,11 @@
     <string name="price">Цена</string>
     <string name="title_activity_add_item">Расходы</string>
     <string name="main_activity">Вход</string>
+
+    <array name="main_pager_titles">
+        <item>Расходы</item>
+        <item>Доходы</item>
+        <item>Баланс</item>
+    </array>
+
 </resources>
