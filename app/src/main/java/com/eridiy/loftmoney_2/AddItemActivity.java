@@ -28,11 +28,11 @@ public class AddItemActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = binding.editTextItem.getText().toString();
                 int price = Integer.parseInt(binding.editTextPrice.getText().toString());
-
                 Intent intent = new Intent();
                 intent.putExtra(MainActivity.ARG_ADD_ITEM_NAME, name);
                 intent.putExtra(MainActivity.ARG_ADD_ITEM_PRICE, price);
                 setResult(MainActivity.ARG_EXTRA, intent);
+                finish();
             }
         });
 
