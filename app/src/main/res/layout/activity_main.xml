@@ -26,11 +26,14 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="57dp"
-        android:layout_height="57dp"
+        android:id="@+id/add_fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_gravity="end|bottom"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FF9E57"
+        android:tint="@color/design_default_color_on_primary"
+        android:src="@drawable/ic_add" />
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>

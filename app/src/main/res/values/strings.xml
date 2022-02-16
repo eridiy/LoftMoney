@@ -6,6 +6,9 @@
     <string name="price">Price</string>
     <string name="title_activity_add_item">Expenses</string>
     <string name="main_activity">Login</string>
+    <string name="connection_lost">Sorry, we can\'t load your item list</string>
+    <string name="fill_fields">Please fill all fields</string>
+    <string name="success_added">Income was successfully added</string>
 
     <array name="main_pager_titles">
         <item>Expenses</item>

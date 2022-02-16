@@ -23,6 +23,7 @@ import android.view.View;
 
 import com.eridiy.loftmoney_2.databinding.ActivityMainBinding;
 import com.eridiy.loftmoney_2.items.ItemsAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -33,12 +34,20 @@ public class MainActivity extends AppCompatActivity {
     public static final String ARG_ADD_ITEM_PRICE = "arg_add_item_price";
     public static final int ARG_EXTRA = 500;
 
+//    FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        FloatingActionButton addNewItemView = findViewById(R.id.add_fab);
+        addNewItemView.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
+            startActivity(intent);
+        });
 
         binding.pages.setAdapter(new MainPagerAdapter(this));
 
@@ -50,25 +59,19 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayoutMediator.attach();
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
-                activityResultLauncher.launch(intent);
-            }
-        });
+//        fab = findViewById(R.id.add_fab);
+//        binding.addFab.setOnClickListener(view1 -> {
+//            Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
+//            activityResultLauncher.launch(intent);
+//        });
     }
 
-    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    Intent intent = result.getData();
-                    String name = intent.getStringExtra(ARG_ADD_ITEM_NAME);
-                    int price = intent.getIntExtra(ARG_ADD_ITEM_PRICE, 0);
-                    Log.d("111", "111");
-                }
-            });
+//    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+//            result -> {
+//                Intent intent = result.getData();
+//                String name = intent.getStringExtra(ARG_ADD_ITEM_NAME);
+//                int price = intent.getIntExtra(ARG_ADD_ITEM_PRICE, 0);
+//            });
 
     private class MainPagerAdapter extends FragmentStateAdapter {
 
