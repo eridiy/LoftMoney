@@ -17,10 +17,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
 
     private ItemAdapterClick itemAdapterClick;
     private List<Item> itemList = new ArrayList<>();
+    private int currentPosition;;
 
-    public void setData(List<Item> items) {
+    public void setData(List<Item> items, int currentPosition) {
         itemList.clear();
         itemList.addAll(items);
+        this.currentPosition = currentPosition;
         notifyDataSetChanged();
     }
 
@@ -29,7 +31,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
     public MoneyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_money, parent, false);
-        return new MoneyViewHolder(view, itemAdapterClick);
+        return new MoneyViewHolder(view, itemAdapterClick, currentPosition);
 
     }
 
@@ -48,12 +50,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
         private TextView name;
         private TextView price;
         private ItemAdapterClick itemAdapterClick;
+        private int currentPosition;
 
-        public MoneyViewHolder(View view, ItemAdapterClick itemAdapterClick) {
+        public MoneyViewHolder(View view, ItemAdapterClick itemAdapterClick, int position) {
             super(view);
             this.itemAdapterClick = itemAdapterClick;
             this.name = view.findViewById(R.id.item_name);
             this.price = view.findViewById(R.id.item_price);
+            this.currentPosition = position;
         }
 
         public void bind(Item item) {

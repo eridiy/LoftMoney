@@ -25,33 +25,40 @@ import io.reactivex.schedulers.Schedulers;
 public class AddItemActivity extends AppCompatActivity {
 
     private ActivityAddItemBinding binding;
-    private EditText edit_text_item;
-    private EditText edit_text_price;
-    private LinearLayout add_item;
+    public static final String ARG_POSITION = "arg_position";
+    private int currentPosition;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_item);
+        binding = ActivityAddItemBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        edit_text_item = findViewById(R.id.edit_text_item);
-        edit_text_price = findViewById(R.id.edit_text_price);
-        add_item = findViewById(R.id.add_item);
+        Bundle arguments = getIntent().getExtras();
+
+        if(arguments != null) {
+            currentPosition = arguments.getInt(ARG_POSITION);
+        }
 
         configureLayuot();
     }
 
     private void configureLayuot() {
-        edit_text_item.setOnClickListener(view -> {
-            if (edit_text_item.getText().equals("") || edit_text_price.getText().equals("")) {
+        binding.addItem.setOnClickListener(view -> {
+            if (binding.editTextItem.getText().equals("") || binding.editTextItem.getText().equals("")) {
                 Toast.makeText(getApplicationContext(), getString(R.string.fill_fields), Toast.LENGTH_LONG).show();
                 return;
             }
 
+            String position = "";
+            if (currentPosition == 0) {
+                position = "expense";
+            } else {
+                position = "income";
+            }
             Disposable disposable = ((LoftApp) getApplication()).loftAPI.postMoney(
-                    Integer.parseInt(edit_text_price.getText().toString()),
-                    edit_text_item.getText().toString(),
-                    "income"
+                    Integer.parseInt(binding.editTextPrice.getText().toString()),
+                    binding.editTextItem.getText().toString(), position
                     )
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -63,26 +70,4 @@ public class AddItemActivity extends AppCompatActivity {
                     });
         });
     }
-
-    //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        binding = ActivityAddItemBinding.inflate(getLayoutInflater());
-//        View view = binding.getRoot();
-//        setContentView(R.layout.activity_add_item);
-//
-//        binding.addItem.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String name = binding.editTextItem.getText().toString();
-//                int price = Integer.parseInt(binding.editTextPrice.getText().toString());
-//                Intent intent = new Intent();
-//                intent.putExtra(MainActivity.ARG_ADD_ITEM_NAME, name);
-//                intent.putExtra(MainActivity.ARG_ADD_ITEM_PRICE, price);
-//                setResult(MainActivity.ARG_EXTRA, intent);
-//                finish();
-//            }
-//        });
-//
-//    }
 }

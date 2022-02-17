@@ -15,6 +15,6 @@ public interface LoftAPI {
 
     @POST("./items/add")
     @FormUrlEncoded
-    Completable postMoney(@Field("price") int price, @Query("name") String name,
-                          @Query("type") String type);
+    Completable postMoney(@Field("price") int price, @Field("name") String name,
+                          @Field("type") String type);
 }

@@ -4,9 +4,12 @@
     <string name="Add">Добавить</string>
     <string name="helloWorld" >Привет, Мир!</string>
     <string name="item">Название</string>
-    <string name="price">Цена</string>
+    <string name="price">Расход</string>
     <string name="title_activity_add_item">Расходы</string>
     <string name="main_activity">Вход</string>
+    <string name="connection_lost">Извините, мы не можем загрузить список</string>
+    <string name="fill_fields">Необходимо заполнить все поля</string>
+    <string name="success_added">Позиция добавлена</string>
 
     <array name="main_pager_titles">
         <item>Расходы</item>

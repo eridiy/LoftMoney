@@ -30,11 +30,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    public static final String ARG_ADD_ITEM_NAME = "arg_add_item_name";
-    public static final String ARG_ADD_ITEM_PRICE = "arg_add_item_price";
-    public static final int ARG_EXTRA = 500;
-
-//    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +37,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-        FloatingActionButton addNewItemView = findViewById(R.id.add_fab);
-        addNewItemView.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
-            startActivity(intent);
-        });
 
         binding.pages.setAdapter(new MainPagerAdapter(this));
 

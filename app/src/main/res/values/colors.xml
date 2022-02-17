@@ -11,4 +11,5 @@
     <color name="color_expense">#4A90E2</color>
     <color name="text_hint">#ABABAB</color>
     <color name="divider">#666664</color>
+    <color name="add_button">#FF9E57</color>
 </resources>
