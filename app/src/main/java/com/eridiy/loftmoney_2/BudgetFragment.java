@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,7 @@ public class BudgetFragment extends Fragment {
         binding = FragmentBudgetBinding.inflate(inflater, container, false);
         // Inflate the layout for this fragment
         return binding.getRoot();
+
     }
 
     @Override
@@ -63,6 +65,8 @@ public class BudgetFragment extends Fragment {
             intent.putExtra(AddItemActivity.ARG_POSITION, currentPosition);
             startActivity(intent);
         });
+
+        configureSwipeRefresh();
     }
 
     @Override
@@ -71,13 +75,6 @@ public class BudgetFragment extends Fragment {
         if (getArguments() != null) {
             currentPosition = getArguments().getInt(ARG_CURRENT_POSITION);
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        getData();
     }
 
     @Override
@@ -94,6 +91,14 @@ public class BudgetFragment extends Fragment {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
         binding.rvItems.addItemDecoration(dividerItemDecoration);
+    }
+
+    private void configureSwipeRefresh() {
+        SwipeRefreshLayout swipeRefreshLayout = binding.budgetSwipeRefreshView;
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            getData();
+            swipeRefreshLayout.setRefreshing(false);
+        });
     }
 
     private void getData() {

@@ -47,20 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         tabLayoutMediator.attach();
-
-//        fab = findViewById(R.id.add_fab);
-//        binding.addFab.setOnClickListener(view1 -> {
-//            Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
-//            activityResultLauncher.launch(intent);
-//        });
     }
-
-//    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-//            result -> {
-//                Intent intent = result.getData();
-//                String name = intent.getStringExtra(ARG_ADD_ITEM_NAME);
-//                int price = intent.getIntExtra(ARG_ADD_ITEM_PRICE, 0);
-//            });
 
     private class MainPagerAdapter extends FragmentStateAdapter {
 

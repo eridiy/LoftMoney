@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">LoftMoney_2</string>
-    <string name="Add">Add</string>
+    <string name="Add">ADD</string>
     <string name="helloWorld">Hello, World!</string>
     <string name="item">Item</string>
     <string name="price">Price</string>
@@ -8,7 +8,8 @@
     <string name="main_activity">Login</string>
     <string name="connection_lost">Sorry, we can\'t load your item list</string>
     <string name="fill_fields">Please fill all fields</string>
-    <string name="success_added">Income was successfully added</string>
+    <string name="success_expense_added">Expense was successfully added</string>
+    <string name="success_income_added">Income was successfully added</string>
 
     <array name="main_pager_titles">
         <item>Expenses</item>

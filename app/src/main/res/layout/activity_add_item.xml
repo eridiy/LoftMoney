@@ -14,12 +14,16 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="113dp"
-        android:hint="@string/price">
+        android:hint="@string/price"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/color_expense"
+            android:textSize="24sp"
+            android:background="@android:color/transparent"
             android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -31,42 +35,60 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
-        android:hint="@string/item">
+        android:hint="@string/item"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/color_expense"
+            android:textSize="24sp"
+            android:background="@android:color/transparent"
             android:inputType="textCapSentences" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--     При параметре drawableStart иконка не отображалась, возможно это связано с тем, что основа не constraint-->
+    <Button
+    android:id="@+id/add_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent"
+    android:layout_marginTop="16dp"
+    android:drawableLeft="@drawable/check_icon"
+    android:padding="16dp"
+    android:drawablePadding="16dp"
+    android:text="@string/Add"
+    android:textColor="@color/add_button_text"
+
+    />
 
 
+<!--    <LinearLayout-->
+<!--        android:id="@+id/add_item"-->
+<!--        android:layout_width="136dp"-->
+<!--        android:layout_height="36dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="57dp">-->
 
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_check_green" />-->
 
-    <LinearLayout
-        android:id="@+id/add_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="57dp">
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/Add"-->
+<!--            android:textColor="@color/add_button_text"-->
+<!--            android:textSize="14sp" />-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_check" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Add"
-            android:textColor="@color/color_income"
-            android:textSize="32sp" />
-
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
 </LinearLayout>

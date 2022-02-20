@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LoftMoney_2</string>
-    <string name="Add">Добавить</string>
+    <string name="Add">ДОБАВИТЬ</string>
     <string name="helloWorld" >Привет, Мир!</string>
     <string name="item">Название</string>
     <string name="price">Расход</string>
@@ -9,7 +9,8 @@
     <string name="main_activity">Вход</string>
     <string name="connection_lost">Извините, мы не можем загрузить список</string>
     <string name="fill_fields">Необходимо заполнить все поля</string>
-    <string name="success_added">Позиция добавлена</string>
+    <string name="success_expense_added">Расход успешно добавлен</string>
+    <string name="success_income_added">Доход успешно добавлен</string>
 
     <array name="main_pager_titles">
         <item>Расходы</item>

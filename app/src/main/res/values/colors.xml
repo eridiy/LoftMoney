@@ -9,7 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_income">#7ED321</color>
     <color name="color_expense">#4A90E2</color>
-    <color name="text_hint">#ABABAB</color>
-    <color name="divider">#666664</color>
+    <color name="text_hint">#DBDBDB</color>
+    <color name="unselected_hint">#ABABAB</color>
+    <color name="unselected_button">#EAEAEA</color>
+    <color name="divider">#666666</color>
     <color name="add_button">#FF9E57</color>
 </resources>
