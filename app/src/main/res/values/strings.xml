@@ -10,6 +10,7 @@
     <string name="fill_fields">Please fill all fields</string>
     <string name="success_expense_added">Expense was successfully added</string>
     <string name="success_income_added">Income was successfully added</string>
+    <string name="action_login">Login</string>
 
     <array name="main_pager_titles">
         <item>Expenses</item>

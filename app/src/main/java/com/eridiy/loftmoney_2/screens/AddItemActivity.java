@@ -1,4 +1,4 @@
-package com.eridiy.loftmoney_2;
+package com.eridiy.loftmoney_2.screens;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.Toast;
 
+import com.eridiy.loftmoney_2.LoftApp;
+import com.eridiy.loftmoney_2.R;
 import com.eridiy.loftmoney_2.databinding.ActivityAddItemBinding;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/splashLogoView"
+        android:layout_width="174dp"
+        android:layout_height="153dp"
+        android:src="@drawable/img_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginEnterView"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/button_default_background"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/action_login"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:paddingStart="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashLogoView"
+        tools:ignore="RtlSymmetry" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="23dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="45dp"
+        android:elevation="10dp"
+        android:src="@drawable/ic_google"
+        app:layout_constraintBottom_toBottomOf="@id/loginEnterView"
+        app:layout_constraintStart_toStartOf="@id/loginEnterView"
+        app:layout_constraintTop_toTopOf="@id/loginEnterView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

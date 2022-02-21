@@ -1,10 +1,8 @@
-package com.eridiy.loftmoney_2;
+package com.eridiy.loftmoney_2.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,8 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.eridiy.loftmoney_2.LoftApp;
+import com.eridiy.loftmoney_2.R;
 import com.eridiy.loftmoney_2.api.RemoteItem;
-import com.eridiy.loftmoney_2.api.Response;
 import com.eridiy.loftmoney_2.databinding.FragmentBudgetBinding;
 import com.eridiy.loftmoney_2.items.Item;
 import com.eridiy.loftmoney_2.items.ItemsAdapter;
@@ -30,7 +29,6 @@ import java.util.List;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class BudgetFragment extends Fragment {

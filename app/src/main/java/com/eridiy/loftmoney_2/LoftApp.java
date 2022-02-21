@@ -2,6 +2,7 @@ package com.eridiy.loftmoney_2;
 
 import android.app.Application;
 
+import com.eridiy.loftmoney_2.api.AuthAPI;
 import com.eridiy.loftmoney_2.api.LoftAPI;
 
 import okhttp3.OkHttpClient;
@@ -13,6 +14,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoftApp extends Application {
 
     public LoftAPI loftAPI;
+    public AuthAPI authAPI;
+
+    public static String AUTH_KEY = "authKey";
 
     @Override
     public void onCreate() {
@@ -30,13 +34,13 @@ public class LoftApp extends Application {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://verdant-violet.glitch.me/")
-             //   .baseUrl("https://loftschool.com/android-api/basic/v1/")
+                .baseUrl("https://loftschool.com/android-api/basic/v1/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         loftAPI = retrofit.create(LoftAPI.class);
+        authAPI = retrofit.create(AuthAPI.class);
     }
 }
