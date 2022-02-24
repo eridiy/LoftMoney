@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 public interface LoftAPI {
 
     @GET("./items")
-    Single<Response> getItems(@Query("type") String type);
+    Single<Response> getItems(@Query("type") String type, @Query("auth-token") String authToken);
 
     @POST("./items/add")
     @FormUrlEncoded

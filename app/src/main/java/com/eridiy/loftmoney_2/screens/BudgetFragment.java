@@ -1,6 +1,7 @@
 package com.eridiy.loftmoney_2.screens;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -63,8 +64,14 @@ public class BudgetFragment extends Fragment {
             intent.putExtra(AddItemActivity.ARG_POSITION, currentPosition);
             startActivity(intent);
         });
+    }
 
-        configureSwipeRefresh();
+    @Override
+    public void onResume() {
+        super.onResume();
+
+//        configureSwipeRefresh();
+        zalepa();
     }
 
     @Override
@@ -73,6 +80,12 @@ public class BudgetFragment extends Fragment {
         if (getArguments() != null) {
             currentPosition = getArguments().getInt(ARG_CURRENT_POSITION);
         }
+    }
+
+    private void zalepa() {
+        ArrayList<Item> list = new ArrayList();
+        list.add(new Item("dddd", 500));
+        itemsAdapter.setData(list, currentPosition);
     }
 
     @Override
@@ -106,7 +119,11 @@ public class BudgetFragment extends Fragment {
         } else {
             position = "income";
         }
-        Disposable disposable = ((LoftApp) getActivity().getApplication()).loftAPI.getItems(position)
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getString(R.string.app_name), 0);
+        String authToken = sharedPreferences.getString(LoftApp.AUTH_KEY, "");
+
+        Disposable disposable = ((LoftApp) getActivity().getApplication()).loftAPI.getItems(position, authToken)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(Response -> {

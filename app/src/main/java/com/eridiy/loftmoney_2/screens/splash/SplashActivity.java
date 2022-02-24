@@ -1,5 +1,6 @@
 package com.eridiy.loftmoney_2.screens.splash;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.eridiy.loftmoney_2.R;
 import com.eridiy.loftmoney_2.screens.BudgetFragment;
 import com.eridiy.loftmoney_2.screens.login.LoginActivity;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -24,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.app_name), 0);
         String authToken = sharedPreferences.getString(LoftApp.AUTH_KEY, "");
 
-        if (!TextUtils.isEmpty(authToken)) {
+        if (TextUtils.isEmpty(authToken)) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             finish();

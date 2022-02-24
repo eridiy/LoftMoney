@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.eridiy.loftmoney_2.R;
@@ -37,7 +38,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MoneyViewHolder holder, int position) {
-        holder.bind(itemList.get(position));
+        holder.bind(itemList.get(position), currentPosition);
     }
 
     @Override
@@ -60,9 +61,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
             this.currentPosition = position;
         }
 
-        public void bind(Item item) {
+        public void bind(Item item, int position) {
+            if (position == 0) {
+                price.setTextColor(ContextCompat.getColor(price.getContext(), R.color.color_expense));
+            } else {
+                price.setTextColor(ContextCompat.getColor(price.getContext(), R.color.color_income));
+            }
             name.setText(item.getName());
-            price.setText(String.valueOf(item.getPrice()));
+            price.setText(String.valueOf(item.getPrice() + " ₽"));
         }
 
     }
