@@ -18,4 +18,6 @@
         <item>Balance</item>
     </array>
 
+    <string name="client_secret" translatable="false">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</string>
+    <string name="client_id" translatable="false">213319143140-b7v400lhg10pgk98b3irritdrnntrkk1.apps.googleusercontent.com</string>
 </resources>

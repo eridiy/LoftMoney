@@ -70,8 +70,8 @@ public class BudgetFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-//        configureSwipeRefresh();
-        zalepa();
+        configureSwipeRefresh();
+//        zalepa();
     }
 
     @Override
@@ -82,11 +82,11 @@ public class BudgetFragment extends Fragment {
         }
     }
 
-    private void zalepa() {
-        ArrayList<Item> list = new ArrayList();
-        list.add(new Item("dddd", 500));
-        itemsAdapter.setData(list, currentPosition);
-    }
+//    private void zalepa() {
+//        ArrayList<Item> list = new ArrayList();
+//        list.add(new Item("dddd", 500));
+//        itemsAdapter.setData(list, currentPosition);
+//    }
 
     @Override
     public void onDestroyView() {
@@ -126,18 +126,15 @@ public class BudgetFragment extends Fragment {
         Disposable disposable = ((LoftApp) getActivity().getApplication()).loftAPI.getItems(position, authToken)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Response -> {
-                    if (Response.getStatus().equals("success")) {
-                        List<Item> Items = new ArrayList<>();
+                .subscribe(remoteItems -> {
+                    List<Item> Items = new ArrayList<>();
 
-                        for (RemoteItem remoteItem : Response.getItemsList()) {
+                        for (RemoteItem remoteItem : remoteItems) {
                             Items.add(Item.getInstance(remoteItem));
                         }
 
                         itemsAdapter.setData(Items, currentPosition);
-                    } else {
-                        Toast.makeText(getActivity().getApplicationContext(), getString(R.string.connection_lost), Toast.LENGTH_LONG).show();
-                    }
+
                 }, throwable -> {
                     Toast.makeText(getActivity().getApplicationContext(), throwable.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 });

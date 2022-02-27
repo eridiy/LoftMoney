@@ -14,15 +14,16 @@
         android:theme="@style/Theme.LoftMoney_2">
         <activity android:name=".screens.AddItemActivity" />
         <activity android:name=".screens.splash.SplashActivity"
+            android:exported="true"/>
+
+        <activity android:name=".screens.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <activity android:name=".screens.login.LoginActivity" />
         <activity android:name=".MainActivity" />
 
     </application>
