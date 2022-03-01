@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.eridiy.loftmoney_2.databinding.ActivityMainBinding;
-import com.eridiy.loftmoney_2.screens.BudgetFragment;
+import com.eridiy.loftmoney_2.screens.budget.BudgetFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.eridiy.loftmoney_2.LoftApp;
 import com.eridiy.loftmoney_2.MainActivity;
 import com.eridiy.loftmoney_2.R;
-import com.eridiy.loftmoney_2.screens.BudgetFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

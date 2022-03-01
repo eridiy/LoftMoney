@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.eridiy.loftmoney_2.LoftApp;
 import com.eridiy.loftmoney_2.MainActivity;
 import com.eridiy.loftmoney_2.R;
-import com.eridiy.loftmoney_2.screens.BudgetFragment;
 import com.eridiy.loftmoney_2.screens.login.LoginActivity;
 
 @SuppressLint("CustomSplashScreen")

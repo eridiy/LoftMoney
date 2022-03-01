@@ -1,4 +1,4 @@
-package com.eridiy.loftmoney_2.screens;
+package com.eridiy.loftmoney_2.screens.budget;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +23,7 @@ import com.eridiy.loftmoney_2.api.RemoteItem;
 import com.eridiy.loftmoney_2.databinding.FragmentBudgetBinding;
 import com.eridiy.loftmoney_2.items.Item;
 import com.eridiy.loftmoney_2.items.ItemsAdapter;
+import com.eridiy.loftmoney_2.screens.AddItemActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,6 @@ public class BudgetFragment extends Fragment {
         super.onResume();
 
         configureSwipeRefresh();
-//        zalepa();
     }
 
     @Override
@@ -82,11 +82,6 @@ public class BudgetFragment extends Fragment {
         }
     }
 
-//    private void zalepa() {
-//        ArrayList<Item> list = new ArrayList();
-//        list.add(new Item("dddd", 500));
-//        itemsAdapter.setData(list, currentPosition);
-//    }
 
     @Override
     public void onDestroyView() {

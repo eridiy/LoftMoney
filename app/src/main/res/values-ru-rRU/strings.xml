@@ -5,6 +5,9 @@
     <string name="helloWorld" >Привет, Мир!</string>
     <string name="item">Название</string>
     <string name="price">Расход</string>
+    <string name="title_expenses">Расходы</string>
+    <string name="title_incomes">Доходы</string>
+    <string name="title_balance">Баланс></string>
     <string name="title_activity_add_item">Расходы</string>
     <string name="main_activity">Вход</string>
     <string name="connection_lost">Извините, мы не можем загрузить список</string>
@@ -18,5 +21,7 @@
         <item>Доходы</item>
         <item>Баланс</item>
     </array>
+
+
 
 </resources>
