@@ -26,8 +26,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:fabSize="normal"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="70dp"
         android:backgroundTint="@color/add_button"
-        android:src="@drawable/ic_add" />
+        android:src="@drawable/ic_add"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

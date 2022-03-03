@@ -1,12 +1,15 @@
 package com.eridiy.loftmoney_2.screens.budget;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,14 +19,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.eridiy.loftmoney_2.LoftApp;
 import com.eridiy.loftmoney_2.R;
 import com.eridiy.loftmoney_2.api.RemoteItem;
 import com.eridiy.loftmoney_2.databinding.FragmentBudgetBinding;
 import com.eridiy.loftmoney_2.items.Item;
+import com.eridiy.loftmoney_2.items.ItemAdapterClick;
 import com.eridiy.loftmoney_2.items.ItemsAdapter;
 import com.eridiy.loftmoney_2.screens.AddItemActivity;
+import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +39,17 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class BudgetFragment extends Fragment {
+public class BudgetFragment extends Fragment implements ActionModeListener {
+
+    private AppBarLayout appBarView;
 
     private static final String ARG_CURRENT_POSITION = "current_position";
-    public static final String ARG_ADD_ITEM_NAME = "arg_add_item_name";
-    public static final String ARG_ADD_ITEM_PRICE = "arg_add_item_price";
-    public static final int ARG_EXTRA = 500;
 
     private FragmentBudgetBinding binding;
     private int currentPosition;
     private ItemsAdapter itemsAdapter = new ItemsAdapter();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private BudgetViewModel budgetViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,14 +63,42 @@ public class BudgetFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        configureViewModel();
         configureRecyclerView();
+
+        appBarView = view.findViewById(R.id.appBarView);
 
         binding.addFab.setOnClickListener(view1 -> {
             Intent intent = new Intent(getContext(), AddItemActivity.class);
             intent.putExtra(AddItemActivity.ARG_POSITION, currentPosition);
             startActivity(intent);
         });
+
+        //это скрытие ФАБ
+        binding.rvItems.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && binding.addFab.getVisibility() == View.VISIBLE) {
+                    binding.addFab.hide();
+                } else if (dy < 0 && binding.addFab.getVisibility() != View.VISIBLE) {
+                    binding.addFab.show();
+                }
+            }
+        });
+    }
+
+    @SuppressLint("FragmentLiveDataObserve")
+    private void configureViewModel() {
+        budgetViewModel = new ViewModelProvider(this).get(BudgetViewModel.class);
+
+        budgetViewModel.isActionMode.observe(this, isActionMode -> {
+            Fragment parentFragment = getParentFragment();
+            if (parentFragment instanceof ActionModeListener) {
+                ((ActionModeListener) parentFragment).onActionModeChanged(isActionMode);
+            }
+        });
+
     }
 
     @Override
@@ -80,8 +114,20 @@ public class BudgetFragment extends Fragment {
         if (getArguments() != null) {
             currentPosition = getArguments().getInt(ARG_CURRENT_POSITION);
         }
-    }
+        itemsAdapter.setItemAdapterClick(new ItemAdapterClick() {   //обратить внимание, ставить кликер после супера или после аргумента?
+            @Override
+            public void onItemClick(Item item) {
+                Toast.makeText(getContext(), "it's just a click on " + item.getName(), Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onItemLongClick(Item item) {
+//                Toast.makeText(getContext(), "it's a long click on " + item.getName(), Toast.LENGTH_LONG).show();
+                if (!budgetViewModel.isActionMode.getValue())
+                budgetViewModel.isActionMode.postValue(true);
+            }
+        });
+    }
 
     @Override
     public void onDestroyView() {
@@ -114,7 +160,6 @@ public class BudgetFragment extends Fragment {
         } else {
             position = "income";
         }
-
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getString(R.string.app_name), 0);
         String authToken = sharedPreferences.getString(LoftApp.AUTH_KEY, "");
 
@@ -124,18 +169,17 @@ public class BudgetFragment extends Fragment {
                 .subscribe(remoteItems -> {
                     List<Item> Items = new ArrayList<>();
 
-                        for (RemoteItem remoteItem : remoteItems) {
-                            Items.add(Item.getInstance(remoteItem));
-                        }
+                    for (RemoteItem remoteItem : remoteItems) {
+                        Items.add(Item.getInstance(remoteItem));
+                    }
 
-                        itemsAdapter.setData(Items, currentPosition);
+                    itemsAdapter.setData(Items, currentPosition);
 
                 }, throwable -> {
                     Toast.makeText(getActivity().getApplicationContext(), throwable.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 });
 
         compositeDisposable.add(disposable);
-
     }
 
     private Object getApplication() {
@@ -148,5 +192,11 @@ public class BudgetFragment extends Fragment {
         args.putInt(ARG_CURRENT_POSITION, position);
         budgetFragment.setArguments(args);
         return budgetFragment;
+    }
+
+    @Override
+    public void onActionModeChanged(boolean status) {
+        appBarView.setBackgroundColor(ContextCompat.getColor(getContext(),
+                status ? R.color.selectionColor : R.color.colorPrimary));
     }
 }

@@ -5,6 +5,7 @@
     <string name="helloWorld" >Привет, Мир!</string>
     <string name="item">Название</string>
     <string name="price">Расход</string>
+    <string name="main_title">Учет бюджета</string>
     <string name="title_expenses">Расходы</string>
     <string name="title_incomes">Доходы</string>
     <string name="title_balance">Баланс></string>

@@ -8,7 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#3574FA</color>
-    <color name="colorPrimaryDark">#333F59</color>
+    <color name="colorPrimaryDark">#3574FA</color>
+    <color name="selectionColor">#333F59</color>
     <color name="color_income">#7ED321</color>
     <color name="color_expense">#4A90E2</color>
     <color name="text_hint">#DBDBDB</color>
@@ -16,4 +17,5 @@
     <color name="unselected_button">#EAEAEA</color>
     <color name="divider">#666666</color>
     <color name="add_button">#FF9E57</color>
+    <color name="indicator_color">#FFC107</color>
 </resources>

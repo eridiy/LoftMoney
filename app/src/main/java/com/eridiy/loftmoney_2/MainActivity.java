@@ -1,6 +1,7 @@
 package com.eridiy.loftmoney_2;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -8,8 +9,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 
 import com.eridiy.loftmoney_2.databinding.ActivityMainBinding;
+import com.eridiy.loftmoney_2.screens.balance.BalanceFragment;
 import com.eridiy.loftmoney_2.screens.budget.BudgetFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -24,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        ActionBar actionBar = getSupportActionBar();  // title hide, work!
+        actionBar.hide();
 
         binding.pages.setAdapter(new MainPagerAdapter(this));
 
@@ -45,12 +51,16 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            return BudgetFragment.newInstance(position);
+            if (position == 0 || position == 1) {
+                return BudgetFragment.newInstance(position);
+            } else {
+                return new BalanceFragment();
+            }
         }
 
         @Override
         public int getItemCount() {
-            return 2;
+            return 3;
         }
     }
 }

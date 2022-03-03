@@ -4,6 +4,7 @@
     <string name="helloWorld">Hello, World!</string>
     <string name="item">Item</string>
     <string name="price">Price</string>
+    <string name="main_title">Budget accounting</string>
     <string name="title_expenses">Expenses</string>
     <string name="title_incomes">Incomes</string>
     <string name="title_balance">Balance</string>

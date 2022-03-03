@@ -5,17 +5,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|snap">
 
-        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/backButtonView"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"/>
+
+            <TextView
+                android:id="@+id/mainTitleView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/main_title"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                tools:ignore="SpUsage" />
+
+            <ImageView
+                android:id="@+id/mainActionView"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"/>
+
+        </LinearLayout>
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
+            style="@style/customTabLayout"
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="48dp"
+            android:elevation="1dp"
+
+            app:tabIndicatorColor="@color/indicator_color"
+            app:tabTextColor="@color/unselected_hint"
+            app:tabSelectedTextColor="@color/white"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -23,6 +61,10 @@
         android:id="@+id/pages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+        android:background="@drawable/ic_background_budget"
+        app:layout_anchor="@+id/pages"
+        app:layout_anchorGravity="center"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+    </androidx.viewpager2.widget.ViewPager2>
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

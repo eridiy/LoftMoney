@@ -18,7 +18,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
 
     private ItemAdapterClick itemAdapterClick;
     private List<Item> itemList = new ArrayList<>();
-    private int currentPosition;;
+    private int currentPosition;
+    ;
 
     public void setData(List<Item> items, int currentPosition) {
         itemList.clear();
@@ -46,6 +47,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
         return itemList.size();
     }
 
+    public void setItemAdapterClick(ItemAdapterClick itemAdapterClick) {
+        this.itemAdapterClick = itemAdapterClick;
+    }
+
     static class MoneyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name;
@@ -69,6 +74,26 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
             }
             name.setText(item.getName());
             price.setText(String.valueOf(item.getPrice() + " ₽"));
+
+            // Здесь нужен обычный сетОнКликЛистенер?
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemAdapterClick != null) {
+                        itemAdapterClick.onItemClick(item);
+                    }
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (itemAdapterClick != null) {
+                        itemAdapterClick.onItemLongClick(item);
+                    }
+                    return true;
+                }
+            });
         }
 
     }
