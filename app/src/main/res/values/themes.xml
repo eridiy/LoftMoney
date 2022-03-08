@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.LoftMoney_2" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.LoftMoney_2" parent="AppTheme">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
@@ -22,10 +22,9 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
+    <style name="ActionModeLayout" parent="Widget.Design.TabLayout">
+      <item name="actionModeBackground">@color/selectionColor</item>
     </style>
+
 
 </resources>

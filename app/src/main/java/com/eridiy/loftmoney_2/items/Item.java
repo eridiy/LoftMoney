@@ -6,10 +6,12 @@ public class Item {
 
     private final String name;
     private final int price;
+    private boolean isSelected;
 
     public Item(String name, int price) {
         this.name = name;
         this.price = price;
+        this.isSelected = false;
     }
 
     public String getName() {
@@ -18,6 +20,14 @@ public class Item {
 
     public int getPrice() {
         return price;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public static Item getInstance(RemoteItem remoteItem) {

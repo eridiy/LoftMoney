@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="customTabLayout" parent="Widget.Design.TabLayout">
-<!--        <item name="tabIndicatorColor">@color/default_back</item>-->
-<!--        <item name="tabIndicatorHeight">2dp</item>-->
-<!--        <item name="tabPaddingStart">12dp</item>-->
-<!--        <item name="tabPaddingEnd">12dp</item>-->
-<!--        <item name="textAllCaps">false</item>-->
-<!--        <item name="android:dividerPadding">3dp</item>-->
-        <item name="android:textSize">14sp</item>
-<!--        <item name="android:textColor">@color/white</item>-->
-        <item name="android:unselectedAlpha">70</item>
-<!--        <item name="android:divider">@android:color/black</item>-->
-<!--        <item name="tabBackground">?attr/selectableItemBackground</item>-->
 
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--  It should be true otherwise action mode will not overlay toolbar -->
+        <item name="windowActionModeOverlay">true</item>
+
+        <!--  For Custom Action Mode Background Color/Drawable -->
+        <item name="actionModeBackground">@color/selectionColor</item>
     </style>
+
 </resources>

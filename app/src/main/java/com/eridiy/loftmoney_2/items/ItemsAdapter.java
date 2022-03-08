@@ -28,6 +28,16 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
         notifyDataSetChanged();
     }
 
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void updateItem(Item item) {
+        int itemPosition = itemList.indexOf(item);
+        itemList.set(itemPosition, item);
+        notifyItemChanged(itemPosition);
+    }
+
     @NonNull
     @Override
     public MoneyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,6 +59,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
 
     public void setItemAdapterClick(ItemAdapterClick itemAdapterClick) {
         this.itemAdapterClick = itemAdapterClick;
+    }
+
+    public void clearSelections() {
     }
 
     static class MoneyViewHolder extends RecyclerView.ViewHolder {
@@ -75,24 +88,21 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MoneyViewHol
             name.setText(item.getName());
             price.setText(String.valueOf(item.getPrice() + " ₽"));
 
+            itemView.setBackgroundColor(ContextCompat.getColor(itemView.getContext(),
+                    item.isSelected() ? R.color.itemSelectionColor : R.color.white));
+
             // Здесь нужен обычный сетОнКликЛистенер?
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (itemAdapterClick != null) {
-                        itemAdapterClick.onItemClick(item);
-                    }
+            itemView.setOnClickListener(view -> {
+                if (itemAdapterClick != null) {
+                    itemAdapterClick.onItemClick(item);
                 }
             });
 
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    if (itemAdapterClick != null) {
-                        itemAdapterClick.onItemLongClick(item);
-                    }
-                    return true;
+            itemView.setOnLongClickListener(view -> {
+                if (itemAdapterClick != null) {
+                    itemAdapterClick.onItemLongClick(item);
                 }
+                return true;
             });
         }
 

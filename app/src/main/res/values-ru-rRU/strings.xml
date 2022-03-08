@@ -16,6 +16,7 @@
     <string name="success_expense_added">Расход успешно добавлен</string>
     <string name="success_income_added">Доход успешно добавлен</string>
     <string name="action_login">Войти</string>
+    <string name="selected">Выбрано: </string>
 
     <array name="main_pager_titles">
         <item>Расходы</item>
